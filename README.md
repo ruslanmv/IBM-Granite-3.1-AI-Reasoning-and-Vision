@@ -2,6 +2,8 @@
 
 Artificial Intelligence continues to evolve at a rapid pace, and IBM's Granite 3.1 models are a testament to this progress. In this blog post, we’ll explore the capabilities of the **Granite 3.1 8B Reasoning** and **Granite Vision 3.1 2B Preview** models, and provide a step-by-step guide on how to load and run the reasoning model locally. Whether you're an AI enthusiast or a developer, this post will help you understand and leverage these powerful tools.
 
+![image-20250214011746935](./assets/images/posts/README/image-20250214011746935.png)
+
 ### Interactive Demo: Experience IBM Granite 3.1 in Action
 
 Before diving into the technical details, you can experience the capabilities of IBM Granite 3.1 firsthand through an interactive Gradio demo created by **Ruslan Magana Vsevolodovna**. This demo showcases the reasoning and vision capabilities of the models.
@@ -12,9 +14,21 @@ Before diving into the technical details, you can experience the capabilities of
 
 The demo highlights two main components of the IBM Granite 3.1 models:
 
-1. **Granite 3.1 8B Reasoning**: This model excels in complex reasoning tasks, thanks to its **128k context window**. It can handle long conversations and detailed prompts, making it ideal for tasks that require deep analysis and explanation.
 
-2. **Granite Vision 3.1 2B Preview**: This model adds vision capabilities, allowing the AI to interpret and describe images. You can upload an image and ask questions about its content, making it a powerful tool for visual understanding.
+
+**Granite 3.1 8B Reasoning**: This model excels in complex reasoning tasks, thanks to its **128k context window**. It can handle long conversations and detailed prompts, making it ideal for tasks that require deep analysis and explanation.
+
+![image-20250214011706985](./assets/images/posts/README/image-20250214011706985.png)
+
+
+
+**Granite Vision 3.1 2B Preview**: This model adds vision capabilities, allowing the AI to interpret and describe images. You can upload an image and ask questions about its content, making it a powerful tool for visual understanding.
+
+![image-20250214011450215](./assets/images/posts/README/image-20250214011450215.png)
+
+
+
+
 
 ### How to Load the Granite 3.1 8B Reasoning Model Locally
 
@@ -127,6 +141,5 @@ IBM Granite 3.1 is a powerful suite of models that showcases the future of AI re
 ➡️ **Try the Demo Here:** [IBM Granite 3.1 Demo](https://huggingface.co/spaces/ruslanmv/Granite-Vision-Chatbot)
 
 ➡️ **Download the Reasoning Model Here:** [Granite 3.1 8B Reasoning](https://huggingface.co/ruslanmv/granite-3.1-8b-Reasoning)
-
 
 Feel free to share this blog post and explore the capabilities of IBM Granite 3.1. Let’s continue pushing the boundaries of what AI can achieve!
