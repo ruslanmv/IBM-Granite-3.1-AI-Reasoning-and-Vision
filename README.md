@@ -51,17 +51,24 @@ These libraries include PyTorch for deep learning, accelerate for optimized perf
 Next, create a Python script to load and run the Granite 3.1 8B Reasoning model. Below is the code snippet you can use:
 
 ```python
-from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig
+from transformers import AutoModelForCausalLM, AutoTokenizer, GenerationConfig, BitsAndBytesConfig
 import torch
 
 # Model and tokenizer
 model_name = "ruslanmv/granite-3.1-8b-Reasoning"  # Or "ruslanmv/granite-3.1-2b-Reasoning"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
+
+# Configure 4-bit quantization properly
+quantization_config = BitsAndBytesConfig(
+    load_in_4bit=True,  # Enable 4-bit quantization
+    bnb_4bit_compute_dtype=torch.float16  # Match dtype to avoid slow inference
+)
+
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    device_map='auto',  # Use GPU if available
+    device_map="auto",  # Use GPU if available
     torch_dtype=torch.float16,  # Use float16 for faster inference
-    load_in_4bit=True  # Enable 4-bit quantization for lower memory usage
+    quantization_config=quantization_config  # Use proper config instead of deprecated argument
 )
 
 # Prepare dataset
@@ -81,10 +88,11 @@ text = tokenizer.apply_chat_template([
 
 inputs = tokenizer(text, return_tensors="pt").to("cuda")  # Move input tensor to GPU
 
-# Sampling parameters
+# Sampling parameters (Fixed `do_sample` warning)
 generation_config = GenerationConfig(
-    temperature=0.8,
-    top_p=0.95,
+    do_sample=True,  # Ensure sample-based settings are applied
+    temperature=0.8,  # Active only when `do_sample=True`
+    top_p=0.95,  # Active only when `do_sample=True`
     max_new_tokens=1024,  # Control response length
 )
 
@@ -101,6 +109,7 @@ if start_index != -1:
     output = output[start_index + len("assistant"):].strip()
 
 print(output)
+
 ```
 
 #### 3. Run the Script
@@ -139,6 +148,12 @@ The IBM Granite 3.1 models represent a significant step forward in AI capabiliti
 IBM Granite 3.1 is a powerful suite of models that showcases the future of AI reasoning and vision. Whether you’re exploring the interactive demo or running the model locally, these tools offer a glimpse into the potential of next-generation AI.
 
 ➡️ **Try the Demo Here:** [IBM Granite 3.1 Demo](https://huggingface.co/spaces/ruslanmv/Granite-Vision-Chatbot)
+
+
+
+➡️ **Try the Colab Demo Here:**<a href="https://colab.research.google.com/github/ruslanmv/IBM-Granite-3.1-AI-Reasoning-and-Vision/blob/main/Granite.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+
+
 
 ➡️ **Download the Reasoning Model Here:** [Granite 3.1 8B Reasoning](https://huggingface.co/ruslanmv/granite-3.1-8b-Reasoning)
 
